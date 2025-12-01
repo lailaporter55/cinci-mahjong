@@ -41,7 +41,63 @@ const PostForm = (props) => {
             <input id="review" type="text" name="review" placeholder="review" />
 
         </form>
+    );
+};
+//i need to figure out how i should add the photos in and the stars input will be different 
+
+//list of reviews 
+const PostList = (props) => {
+    const [posts, setPosts] = useState(props.posts); 
+
+    useEffect(() => {
+        const loadPostsFromServer = async() => {
+            const response = await fetch('/getPosts');
+            const data = await response.json(); 
+            setPosts(data.posts);
+        };
+        loadPostsFromServer();
+    }, [props.reloadPosts]);
+
+    if(posts.length === 0){
+        return (
+            <div className="postList">
+                <h3 className="emptyPost">No Posts Yet!</h3>
+            </div>
+        );
+    }
+    const postNodes = posts.map(post => {
+        return(
+            <div key={post.id} className="post">
+                <img src="/assets/img/2tigersLogo.PNG" alt="2 Tigers Logo" class="tigersLogo2"/>
+                <h3 className="starNum">Stars: </h3>
+                <h3 className="review">Review: </h3>
+                <h3 className="photo">Photo: </h3>
+            </div>
+        );
+    });
+    return (
+        <div className="postList">
+            {postNodes}
+        </div>
     )
 }
 
-//i need to figure out how i should add the photos in and the stars input will be different 
+const App = () => {
+    const [reloadPosts, setReloadPosts] = useState(false); 
+
+    return (
+        <div>
+            <div id="makePost">
+                <PostForm triggerReload={() => setReloadPosts(!reloadPosts)} />
+            </div>
+            <div id="domos">
+                <PostList posts={[]} reloadPosts={reloadPosts} />
+            </div>
+        </div>
+    );
+};
+const init = () => {
+    const root = createRoot(document.getElementById('app'));
+    root.render( <App /> );
+};
+window.onload = init;
