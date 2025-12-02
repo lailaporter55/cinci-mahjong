@@ -1,0 +1,6 @@
+@use "sass:list"
+@use "sass:color"
+
+$font-stack: Optima, sans-serif
+$primary-color: #c75a85
+
