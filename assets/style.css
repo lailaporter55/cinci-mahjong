@@ -2,5 +2,6 @@
 @use "sass:color"
 
 $font-stack: Optima, sans-serif
-$primary-color: #c75a85
-
+$primary-color: #1c4482
+$secondary-color: #f3b9cd
+$background-color: #c75a85
