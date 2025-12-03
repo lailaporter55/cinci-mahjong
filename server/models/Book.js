@@ -1,34 +1,34 @@
-const mongoose = require('mongoose'); 
-const _ = require('underscore'); 
+const mongoose = require('mongoose');
+const _ = require('underscore');
 
 const setName = (name) => _.escape(name).trim();
 
 const BookSchema = new mongoose.Schema({
-    name: {
-        type: String, 
-        required: true, 
-        trim: true,
-        set: setName,
-    }, 
-    time: {
-        type: Date,
-        required: true,
-    }, 
-    price: {
-        type: Number,
-        min: 100,
-        required: true,
-    }, 
-    attendees:{
-        type: Number, 
-        required : true,
-        min: 5,
-    },
-    owner:{
-        type: mongoose.Schema.ObjectId, 
-        required: true, 
-        ref: 'Account', 
-    }, 
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+    set: setName,
+  },
+  time: {
+    type: Date,
+    required: true,
+  },
+  price: {
+    type: Number,
+    min: 100,
+    required: true,
+  },
+  attendees: {
+    type: Number,
+    required: true,
+    min: 5,
+  },
+  owner: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+    ref: 'Account',
+  },
 });
 
 module.exports = mongoose.model('Book', BookSchema);
