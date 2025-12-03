@@ -5,7 +5,7 @@ const {createRoot} = require('react-dom/client');
 
 const handleParty = (e, onPartyAdded) => {
     e.preventDefault(); 
-    helper.hideError(); 
+    helper.hideError();
 
     const name = e.target.querySelector('#partyName').value; 
     const time = e.target.querySelector('#partyTime').value; 
@@ -18,7 +18,7 @@ const handleParty = (e, onPartyAdded) => {
 
     helper.sendPost(e.target.action, { name, time, attendees }, onPartyAdded); 
     return false; 
-}; 
+}
 
 const PartyForm = (props) => {
     return (
@@ -42,13 +42,13 @@ const PartyForm = (props) => {
 }; 
 
 const PartyList = (props) => {
-    const [domos, createParty] = useState(props.parties); 
+    const [domos, book] = useState(props.parties); 
 
     useEffect(() => {
         const loadPartiesFromServer = async () => {
             const response = await fetch('/getParties');
             const data = await response.json(); 
-            createParty(data.domos);
+            book(data.domos);
         };
         loadPartiesFromServer(); 
     }, [props.reloadParty]);
@@ -85,7 +85,7 @@ const App = () => {
 
     return (
         <div>
-        <div id="createParty">
+        <div id="book">
             <PartyForm triggerReload={() => setReloadParty(!reloadParty)} />
         </div>
         <div id="parties">
