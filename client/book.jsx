@@ -3,27 +3,6 @@ const React = require('react');
 const { useState, useEffect } = React; 
 const {createRoot} = require('react-dom/client'); 
 
-const PartyForm = (props) => {
-    return (
-        <form id="partyForm"
-            onSubmit={(e) => handleParty(e, props.triggerReload)}
-            name="partyForm"
-            action="/createParty"
-            method="POST"
-            className="partyForm"
-        >
-            <label htmlFor="name">Name: </label>
-            <input id="partyName" type="text" name="name" placeholder="Party Name" />
-            <label htmlFor="time">Time: </label>
-            <input id="partyTime" type="text" name="time" placeholder="Party Time" />
-            <label htmlFor="attendees">Attendees: </label>
-            <input id="partyAttendees" type="number" min="1" name="attendees" />
-            <input className="makePartySubmit" type="submit" value="Create Party" />
-
-        </form>
-    ); 
-}; 
-
 const handleParty = (e, onPartyAdded) => {
     e.preventDefault(); 
     helper.hideError(); 
@@ -39,6 +18,27 @@ const handleParty = (e, onPartyAdded) => {
 
     helper.sendPost(e.target.action, { name, time, attendees }, onPartyAdded); 
     return false; 
+}; 
+
+const PartyForm = (props) => {
+    return (
+        <form id="partyForm"
+            onSubmit={(e) => handleParty(e, props.triggerReload)}
+            name="partyForm"
+            action="/book"
+            method="POST"
+            className="partyForm"
+        >
+            <label htmlFor="name">Name: </label>
+            <input id="partyName" type="text" name="name" placeholder="Party Name" />
+            <label htmlFor="time">Time: </label>
+            <input id="partyTime" type="text" name="time" placeholder="Party Time" />
+            <label htmlFor="attendees">Attendees: </label>
+            <input id="partyAttendees" type="number" min="1" name="attendees" />
+            <input className="makePartySubmit" type="submit" value="Create Party" />
+
+        </form>
+    ); 
 }; 
 
 const PartyList = (props) => {
