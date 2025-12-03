@@ -1,10 +1,14 @@
 const mongoose = require('mongoose'); 
 const _ = require('underscore'); 
 
+const setName = (name) => _.escape(name).trim();
+
 const BookSchema = new mongoose.Schema({
     name: {
         type: String, 
         required: true, 
+        trim: true,
+        set: setName,
     }, 
     time: {
         type: Date,
