@@ -1,4 +1,3 @@
-const { get } = require('underscore');
 const models = require('../models'); 
 const Party = models.Party; 
 
@@ -8,12 +7,13 @@ const getParty = (req, res) => {
 
 const createParty = async (req, res) => {
     const {name, time, attendees} = req.body;
+
+    const price = attendees * 20; //price changes based on how many domos are attending
     
     if(!name || !time || !price || !attendees){
         return res.status(400).json({error: 'All fields are required!'}); 
     }
 
-    const price = attendees * 20; //price changes based on how many domos are attending
     const booking = new Party({
         name, 
         time, 
@@ -34,8 +34,15 @@ const createParty = async (req, res) => {
 }; 
 
 const getParties = async (req, res) => {
-    const parties = await Party.find(query).select('name time attendees price ').lean().exec(); 
-    return res.json({parties: parties});
+    try{
+        const query = { owner: req.session.account._id };
+        const docs = await Party.find(query).select('name time attendees price').lean().exec(); 
+        return res.json({parties: docs});
+    } catch(err){
+        console.log(err); 
+        return res.status(500).json({error: 'Error retrieving parties!'}); 
+    }
+    
 }; 
 
 module.exports = {
