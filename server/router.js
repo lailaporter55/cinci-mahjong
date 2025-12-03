@@ -9,8 +9,8 @@ const router = (app) => {
 
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
-  app.get('/maker', mid.requiresLogin, controllers.Domo.makerPage);
-  app.post('/maker', mid.requiresLogin, controllers.Domo.makeDomo);
+  app.get('/book', mid.requiresLogin, controllers.Domo.makerPage);
+  app.post('/book', mid.requiresLogin, controllers.Domo.makeDomo);
 
   app.post('/createParty', mid.requiresLogin, controllers.Party.createParty);
   app.get('/getParty', mid.requiresLogin, controllers.Party.getParty);

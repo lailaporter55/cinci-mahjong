@@ -48,3 +48,6 @@ module.exports = {
   createParty,
   getParties,
 };
+
+
+//i dont want this to show until after login

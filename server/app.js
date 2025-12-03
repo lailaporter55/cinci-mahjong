@@ -15,7 +15,7 @@ const router = require('./router.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
+const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/cincy-mahjong';
 
 mongoose.connect(dbURI).catch((err) => {
   if (err) {
@@ -34,7 +34,7 @@ redisClient.connect().then(() => {
 
   app.use(helmet());
   app.use('/assets', express.static(path.resolve(`${__dirname}/../assets`)));
-  app.use(favicon(path.resolve(`${__dirname}/../assets/img/circlelogi.PNG`)));
+  app.use(favicon(path.resolve(`${__dirname}/../assets/img/circlelogo.PNG`)));
   app.use(compress());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
