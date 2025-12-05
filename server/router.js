@@ -3,6 +3,7 @@ const mid = require('./middleware');
 
 const router = (app) => {
 
+
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
 
@@ -12,11 +13,11 @@ const router = (app) => {
 
   app.get('/getParty', mid.requiresLogin, controllers.Party.getParty);
   app.post('/createParty', mid.requiresLogin, controllers.Party.createParty);
-  app.get('/getParties', mid.requiresLogin, controllers.Party.getParties);
+  app.get('/getParties',controllers.Party.getParties);
 
   app.get('/post', mid.requiresLogin, controllers.Post.getPost);
   app.post('/createPost', mid.requiresLogin, controllers.Post.createPost);
-  app.get('/getPosts', mid.requiresLogin, controllers.Post.getPosts);
+  app.get('/getPosts', controllers.Post.getPosts);
 
   //tiles stuff here later
 
