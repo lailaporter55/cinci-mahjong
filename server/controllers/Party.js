@@ -50,4 +50,3 @@ module.exports = {
 };
 
 
-//i dont want this to show until after login

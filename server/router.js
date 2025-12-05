@@ -10,9 +10,15 @@ const router = (app) => {
 
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
-  app.post('/createParty', mid.requiresLogin, controllers.Party.createParty);
   app.get('/getParty', mid.requiresLogin, controllers.Party.getParty);
+  app.post('/createParty', mid.requiresLogin, controllers.Party.createParty);
   app.get('/getParties', mid.requiresLogin, controllers.Party.getParties);
+
+  app.get('/post', mid.requiresLogin, controllers.Post.getPost);
+  app.post('/createPost', mid.requiresLogin, controllers.Post.createPost);
+  app.get('/getPosts', mid.requiresLogin, controllers.Post.getPosts);
+
+  //tiles stuff here later
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
