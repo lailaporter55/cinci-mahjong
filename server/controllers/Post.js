@@ -6,12 +6,20 @@ const { Post } = models;
 const getPost = (req, res) => res.render('post');
 
 const createPost = async (req, res) => {
-  const {name, title, photo, stars, review} = req.body;
-    if (!name || !title || !photo || !stars || !review) {
+    if(!req.body.name || !req.body.title || !req.body.photo || !req.body.stars || !req.body.review){
         return res.status(400).json({ error: 'All fields are required!' });
     }
+    const postData = {
+        name: req.body.name,
+        title: req.body.title,
+        photo: req.body.photo,
+        stars: req.body.stars,
+        review: req.body.review,
+        owner: req.session.account._id,
+    };
 
     try{
+        const post = new Post(postData);
         await post.save(); 
         return res.status(201).json({ message: 'Post created successfully!' });
     } catch(err){
