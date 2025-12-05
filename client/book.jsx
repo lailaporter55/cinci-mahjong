@@ -1,3 +1,5 @@
+//user can only make booking while logged in
+//user can view bookings while logged out
 const helper = require('./helper.js'); 
 const React = require('react'); 
 const { useState, useEffect } = React; 
@@ -80,22 +82,23 @@ const PartyList = (props) => {
     )
 }; 
 
-const App = () => {
+const App = async (props) => {
     const [reloadParty, setReloadParty] = useState(false); 
-
-    return (
-        <div>
+    if(props.isLoggedIn){
         <div id="book">
             <PartyForm triggerReload={() => setReloadParty(!reloadParty)} />
         </div>
+    }
+
+    return (
         <div id="parties">
             <PartyList parties={[]} reloadParty={reloadParty} />
         </div>
-    </div>
 );
 }; 
 
-const init = () => {
+const init = async () => {
+    
     const root = createRoot(document.getElementById('app'));
     root.render( <App /> );
 }; 

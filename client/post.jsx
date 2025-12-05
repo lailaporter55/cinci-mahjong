@@ -3,6 +3,8 @@
 * will show up after the user logs into the party page
 */
 
+//user can see posts without logging in
+
 const helper = require('./helper.js');
 const React = require('react'); 
 const { useState, useEffect } = React; 
@@ -82,14 +84,17 @@ const PostList = (props) => {
     )
 }
 
-const App = () => {
+const App = async (props) => {
     const [reloadPosts, setReloadPosts] = useState(false); 
+
+    if(props.isLoggedIn){
+        <div id="makePost">
+                <PostForm triggerReload={() => setReloadPosts(!reloadPosts)} />
+        </div>
+    }
 
     return (
         <div>
-            <div id="makePost">
-                <PostForm triggerReload={() => setReloadPosts(!reloadPosts)} />
-            </div>
             <div id="domos">
                 <PostList posts={[]} reloadPosts={reloadPosts} />
             </div>
