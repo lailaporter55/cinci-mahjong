@@ -16,4 +16,27 @@ const TileSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Tile', TileSchema);
+const OrderScheme = new mongoose.Schema({
+    items: [
+        {
+            product: {type: mongoose.Schema.ObjectId, ref: 'Tile', required: true},
+            quantity: {type: Number, required: true, min: 1},
+        }
+    ],
+    totalPrice: {
+        type: Number,
+        required: true,
+    },
+    orderDate:{
+        type: Date,
+        default: Date.now,
+    },
+}); 
+
+const Product = mongoose.model('Tile', TileSchema);
+const Order = mongoose.model('Order', OrderScheme);
+
+module.exports = {
+    Product,
+    Order,
+};
