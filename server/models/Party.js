@@ -3,7 +3,7 @@ const _ = require('underscore');
 
 const setName = (name) => _.escape(name).trim();
 
-const BookSchema = new mongoose.Schema({
+const PartySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -22,7 +22,7 @@ const BookSchema = new mongoose.Schema({
   attendees: {
     type: Number,
     required: true,
-    min: 5,
+    min: 4,
   },
   owner: {
     type: mongoose.Schema.ObjectId,
@@ -31,4 +31,4 @@ const BookSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Book', BookSchema);
+module.exports = mongoose.model('Party', PartySchema);
