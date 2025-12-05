@@ -1,2 +1,2 @@
 module.exports.Account = require('./Account.js');
-module.exports.Domo = require('./Party.js');
+module.exports.Party = require('./Party.js');

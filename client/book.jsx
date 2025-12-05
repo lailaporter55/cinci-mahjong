@@ -44,18 +44,18 @@ const PartyForm = (props) => {
 }; 
 
 const PartyList = (props) => {
-    const [domos, book] = useState(props.parties); 
+    const [parties, book] = useState(props.parties); 
 
     useEffect(() => {
         const loadPartiesFromServer = async () => {
             const response = await fetch('/getParties');
             const data = await response.json(); 
-            book(data.domos);
+            book(data.parties);
         };
         loadPartiesFromServer(); 
     }, [props.reloadParty]);
 
-    if(domos.length === 0){
+    if(parties.length === 0){
         return (
             <div className="partyList">
                 <h3 className="emptyParty">No Party Yet!</h3>

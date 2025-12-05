@@ -95,7 +95,7 @@ const App = async (props) => {
 
     return (
         <div>
-            <div id="domos">
+            <div id="postList">
                 <PostList posts={[]} reloadPosts={reloadPosts} />
             </div>
         </div>

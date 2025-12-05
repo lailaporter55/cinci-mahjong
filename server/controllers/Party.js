@@ -7,7 +7,7 @@ const getParty = (req, res) => res.render('party');
 const createParty = async (req, res) => {
   const { name, time, attendees } = req.body;
 
-  const price = attendees * 20; // price changes based on how many domos are attending
+  const price = attendees * 20; // price changes based on how many people are attending
 
   if (!name || !time || !price || !attendees) {
     return res.status(400).json({ error: 'All fields are required!' });
