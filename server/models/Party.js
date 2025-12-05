@@ -29,6 +29,10 @@ const PartySchema = new mongoose.Schema({
     required: true,
     ref: 'Account',
   },
+  createdDate:{
+    type: Date, 
+    default: Date.now,
+},
 });
 
 module.exports = mongoose.model('Party', PartySchema);
