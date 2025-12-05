@@ -1,7 +1,7 @@
-const { get } = require('underscore');
 const models = require('../models');
 
 const { Post } = models;
+
 
 const getPost = (req, res) => res.render('post');
 
