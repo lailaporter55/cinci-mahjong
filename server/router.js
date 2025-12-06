@@ -15,11 +15,12 @@ const router = (app) => {
   app.post('/createParty', mid.requiresLogin, controllers.Party.createParty);
   app.get('/getParties',controllers.Party.getParties);
 
-  app.get('/post', mid.requiresLogin, controllers.Post.getPost);
   app.post('/createPost', mid.requiresLogin, controllers.Post.createPost);
   app.get('/getPosts', controllers.Post.getPosts);
 
-  //tiles stuff here later
+  app.get('/getTiles', controllers.Tiles.getTiles);
+  app.post('/createOrder', mid.requiresLogin, controllers.Tiles.createOrder);
+  app.get('/orders', mid.requiresLogin, controllers.Tiles.getOrders);
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
