@@ -1,0 +1,32 @@
+{
+    "products": [
+        {
+            "id": 123, 
+            "name": "Tile Set A",
+            "price": 301.00, 
+            "description": "A complete set of mahjong tiles.",
+            "photo": "https://example.com/photos/tilesetA.jpg"
+        },
+        {
+            "id": 124, 
+            "name": "Tile Set B",
+            "price": 301.00, 
+            "description": "A complete set of mahjong tiles.",
+            "photo": "https://example.com/photos/tilesetA.jpg"
+        },
+        {
+            "id": 125, 
+            "name": "Tile Set C",
+            "price": 301.00, 
+            "description": "A complete set of mahjong tiles.",
+            "photo": "https://example.com/photos/tilesetA.jpg"
+        },
+        {
+            "id": 126, 
+            "name": "Tile Set D",
+            "price": 301.00, 
+            "description": "A complete set of mahjong tiles.",
+            "photo": "https://example.com/photos/tilesetA.jpg"
+        }
+    ]
+}
