@@ -28,7 +28,7 @@ const createOrder = async (req, res) => {
         orderDate: new Date(),
     };
     try{
-        const order = new Order(orderData);
+        const order = new Tiles(orderData);
         await order.save(); 
         return res.status(201).json({ message: 'Order created successfully!', orderId: order.id});
     } catch(err){
@@ -42,7 +42,7 @@ const createOrder = async (req, res) => {
 const getOrders = async (req, res) => {
     try{
         const query = { owner: req.session.account._id };
-        const docs = await Order.find(query).select('items total customerName customerEmail orderDate').lean().exec();
+        const docs = await Tiles.find(query).select('items total customerName customerEmail orderDate').lean().exec();
         return res.json({ orders: docs });
     } catch(err){
         console.log(err);
