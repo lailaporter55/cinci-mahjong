@@ -2,16 +2,24 @@ const models = require('../models');
 
 const { Tiles } = models;
 
-const tiles = JSON.parse(flushSync.readFileSync(tilesPath, 'utf8'));
+const getTilesPage = (req, res) => res.render('tiles');
 
-let orders = []; 
-
-const getTiles = (req, res) => {
-  res.json(products);
+const getTiles = async (req, res) => {
+    try{
+        const docs = await Tiles.find({}).select('name description price imageUrl').lean().exec();
+        return res.json({ tiles: docs });
+    }catch(err){
+        console.log(err);
+        return res.status(500).json({ error: 'Error retrieving tiles!' });
+    }
 };
 
-const createOrder = (req, res) => {
-    const order = {
+
+const createOrder = async (req, res) => {
+    if(!req.body.items || !req.bod.totalPrice || !req.body.customerName || !req.body.customerEmail){
+        return res.status(400).json({ error: 'All fields are required!' });
+    }
+    const orderData = {
         id: orders.length + 1,
         items: req.body.items,
         total: req.body.totalPrice,
@@ -19,15 +27,31 @@ const createOrder = (req, res) => {
         customerEmail: req.body.customerEmail,
         orderDate: new Date(),
     };
-    orders.push(order);
-    res.status(201).json({ message: 'Order created successfully!', orderId: order.id });
-};
+    try{
+        const order = new Order(orderData);
+        await order.save(); 
+        return res.status(201).json({ message: 'Order created successfully!', orderId: order.id});
+    } catch(err){
+        console.log(err);
+        if(err.code === 11000){
+            return res.status(400).json({ error: 'Order already exists.' });
+        }
+    };
+}
 
-const getOrders = (req, res) => {
-    res.json(orders);
+const getOrders = async (req, res) => {
+    try{
+        const query = { owner: req.session.account._id };
+        const docs = await Order.find(query).select('items total customerName customerEmail orderDate').lean().exec();
+        return res.json({ orders: docs });
+    } catch(err){
+        console.log(err);
+        return res.status(500).json({ error: 'Error retrieving orders!' });
+    }
 };
 
 module.exports = {
+    getTilesPage,
     getTiles,
     createOrder,
     getOrders,
