@@ -2,6 +2,8 @@ const models = require('../models');
 
 const { Tiles } = models;
 
+
+
 const getTilesPage = (req, res) => res.render('tiles');
 
 const getTiles = async (req, res) => {
@@ -36,6 +38,7 @@ const createOrder = async (req, res) => {
         if(err.code === 11000){
             return res.status(400).json({ error: 'Order already exists.' });
         }
+        return res.status(500).json({ error: 'An error occurred while creating order!' });
     };
 }
 
