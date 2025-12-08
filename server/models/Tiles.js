@@ -12,7 +12,7 @@ const TileSchema = new mongoose.Schema({
     },
     img:{
         type: String,
-        requir, ed: true,
+        required: true,
     }
 });
 

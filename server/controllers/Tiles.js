@@ -20,12 +20,12 @@ const createOrder = async (req, res) => {
         return res.status(400).json({ error: 'All fields are required!' });
     }
     const orderData = {
-        id: orders.length + 1,
         items: req.body.items,
-        total: req.body.totalPrice,
+        totalPrice: req.body.totalPrice,
         customerName: req.body.customerName,
         customerEmail: req.body.customerEmail,
         orderDate: new Date(),
+        owner: req.session.account._id,
     };
     try{
         const order = new Tiles(orderData);
