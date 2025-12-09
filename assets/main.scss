@@ -5,3 +5,103 @@ $font-stack: Optima, sans-serif;
 $primary-color: #1c4482;
 $secondary-color: #f3b9cd;
 $background-color: #c75a85;
+$nav-bg: color.scale($primary-color, $lightness: -10%);
+$light-pink: #ffdceb; 
+
+body{
+    margin: 0;
+    font-family: $font-stack;
+    background-color: $background-color;
+    color: $primary-color;
+}
+
+nav{
+    width: 100%;
+    background-color: $nav-bg;
+    display : flex;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 30px;
+
+    a{
+        color: color.scale($secondary-color, $lightness: 30%); 
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    
+        &:hover{
+            color: white;
+        }
+    }
+}
+
+
+#home{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#left{
+    padding: 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    #logo{
+        width: 140px;
+        margin-bottom: 50px;
+    }
+    
+    #title{
+        font-size: 4rem;
+        font-weight: 800;
+        color: $secondary-color;
+        line-height: 1.05;
+        margin: 0;
+    }
+}
+
+#right{
+    display: flex;
+    flex-direction: column;
+
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+#about{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 40px;
+
+    h2{
+        font-size: 2rem;
+        font-weight: 700;
+        color: $primary-color;
+        margin-bottom: 20px;
+    }
+
+    p{
+        background-color: $secondary-color;
+        padding: 25px;
+        width: 80%;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        color: $primary-color;
+    }
+
+    .book{
+        display: inline-block;
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: $primary-color;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
