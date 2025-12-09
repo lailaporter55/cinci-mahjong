@@ -6,52 +6,53 @@ $primary-color: #1c4482;
 $secondary-color: #f3b9cd;
 $background-color: #c75a85;
 $nav-bg: color.scale($primary-color, $lightness: -10%);
-$light-pink: #ffdceb; 
+$light-pink: #ffdceb;
 
-body{
+body {
     margin: 0;
     font-family: $font-stack;
     background-color: $background-color;
     color: $primary-color;
 }
 
-nav{
+nav {
     width: 100%;
     background-color: $nav-bg;
-    display : flex;
+    display: flex;
     justify-content: center;
     padding: 10px 0;
     gap: 30px;
 
-    a{
-        color: color.scale($secondary-color, $lightness: 30%); 
+    a {
+        color: color.scale($secondary-color, $lightness: 30%);
         text-decoration: none;
         font-weight: bold;
         letter-spacing: 0.5px;
-    
-        &:hover{
+
+        &:hover {
             color: white;
         }
     }
 }
 
 
-#home{
+#home {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-#left{
-    padding: 40px; 
+
+#left {
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 
-    #logo{
+    #logo {
         width: 140px;
         margin-bottom: 50px;
     }
-    
-    #title{
+
+    #title {
         font-size: 4rem;
         font-weight: 800;
         color: $secondary-color;
@@ -60,29 +61,29 @@ nav{
     }
 }
 
-#right{
+#right {
     display: flex;
     flex-direction: column;
 
-    img{
+    img {
         width: 100%;
         object-fit: cover;
     }
 }
 
-#about{
+#about {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 40px;
 
-    h2{
+    h2 {
         font-size: 2rem;
         font-weight: 700;
         color: $primary-color;
         margin-bottom: 20px;
     }
 
-    p{
+    p {
         background-color: $secondary-color;
         padding: 25px;
         width: 80%;
@@ -91,7 +92,7 @@ nav{
         color: $primary-color;
     }
 
-    .book{
+    .book {
         display: inline-block;
         margin-top: 10px;
         font-weight: 700;
@@ -99,9 +100,133 @@ nav{
         color: $primary-color;
         text-decoration: none;
 
-        &:hover{
+        &:hover {
             text-decoration: underline;
         }
     }
 }
 
+#book {
+    background-color: $secondary-color;
+    padding: 60px 40px;
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $primary-color;
+        margin-bottom: 10px;
+    }
+
+    p#intro {
+        font-size: 1.25rem;
+        color: $primary-color;
+        max-width: 500px;
+        line-height: 1.5;
+    }
+
+    #id {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .leagueCard {
+        background: $primary-color;
+        color: white;
+        padding: 30px 32px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        li {
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        button {
+            margin-top: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 12px 24px;
+            background: $secondary-color;
+            color: $primary-color;
+            border: none;
+            border-radius: 22px;
+            cursor: pointer;
+            text-decoration: none;
+
+            &:hover {
+                background: color.scale($secondary-color, $lightness: -10%);
+            }
+        }
+    }
+
+    #lessons {
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: $primary-color;
+            margin-top: 50px;
+        }
+
+        .lessonCard {
+            background: $primary-color;
+            color: white;
+            padding: 30px 32px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            h2 {
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin-bottom: 4px;
+            }
+
+            .price {
+                font-size: 2.2rem;
+                font-weight: 700;
+                margin: 10px 0;
+            }
+
+            li {
+                margin-bottom: 6px;
+                line-height: 1.3;
+            }
+
+            button {
+                margin-top: 16px;
+                font-size: 1rem;
+                font-weight: 700;
+                padding: 12px 24px;
+                background: $secondary-color;
+                color: $primary-color;
+                border: none;
+                border-radius: 22px;
+                cursor: pointer;
+                text-decoration: none;
+
+                &:hover {
+                    background: color.scale($secondary-color, $lightness: -10%);
+                }
+            }
+        }
+    }
+}
