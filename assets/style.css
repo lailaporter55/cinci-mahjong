@@ -31,30 +31,28 @@ nav a:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-
-#left {
+#home #left {
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-#left #logo {
+#home #left #logo {
   width: 140px;
   margin-bottom: 50px;
 }
-#left #title {
+#home #left #title {
   font-size: 4rem;
   font-weight: 800;
   color: #f3b9cd;
   line-height: 1.05;
   margin: 0;
 }
-
-#right {
+#home #right {
   display: flex;
   flex-direction: column;
 }
-#right img {
+#home #right img {
   width: 100%;
   object-fit: cover;
 }
@@ -70,13 +68,16 @@ nav a:hover {
   color: #1c4482;
   margin-bottom: 20px;
 }
-#about p {
+#about p#aboutMe {
   background-color: #f3b9cd;
   padding: 25px;
   width: 80%;
   border-radius: 4px;
   margin-bottom: 20px;
   color: #1c4482;
+}
+#about #christy {
+  width: 100%;
 }
 #about .book {
   display: inline-block;
@@ -88,6 +89,44 @@ nav a:hover {
 }
 #about .book:hover {
   text-decoration: underline;
+}
+
+#contact {
+  background-color: #f3b9cd;
+  padding: 60px 40px;
+  text-align: center;
+}
+#contact h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1c4482;
+  margin-bottom: 20px;
+}
+#contact p {
+  font-size: 1.2rem;
+  color: #1c4482;
+  margin: 0 auto;
+  line-height: 2;
+}
+#contact #contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+#contact .contact {
+  font-weight: bold;
+}
+#contact #socials {
+  margin-top: 20px;
+}
+#contact #socials a {
+  font-size: 2rem;
+  color: #1c4482;
+  margin: 0 15px;
+  text-decoration: none;
+}
+#contact #socials a:hover {
+  color: rgb(22.4, 54.4, 104);
 }
 
 #book {
