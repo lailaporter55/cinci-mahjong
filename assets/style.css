@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Optima, sans-serif;
@@ -84,6 +88,113 @@ nav a:hover {
 }
 #about .book:hover {
   text-decoration: underline;
+}
+
+#book {
+  background-color: #f3b9cd;
+  padding: 60px 40px;
+}
+#book h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1c4482;
+  margin-bottom: 10px;
+}
+#book p#intro {
+  font-size: 1.25rem;
+  color: #1c4482;
+  max-width: 500px;
+  line-height: 1.5;
+}
+#book #id {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+#book .leagueCard {
+  background: #1c4482;
+  color: white;
+  padding: 30px 32px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#book .leagueCard h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+#book .leagueCard .price {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 10px 0;
+}
+#book .leagueCard li {
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+#book .leagueCard button {
+  margin-top: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  background: #f3b9cd;
+  color: #1c4482;
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+  text-decoration: none;
+}
+#book .leagueCard button:hover {
+  background: rgb(236.7365853659, 148.4634146341, 178.9024390244);
+}
+#book #lessons h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1c4482;
+  margin-top: 50px;
+}
+#book #lessons .lessonCard {
+  background: #1c4482;
+  color: white;
+  padding: 30px 32px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#book #lessons .lessonCard h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+#book #lessons .lessonCard .price {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 10px 0;
+}
+#book #lessons .lessonCard li {
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+#book #lessons .lessonCard button {
+  margin-top: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  background: #f3b9cd;
+  color: #1c4482;
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+  text-decoration: none;
+}
+#book #lessons .lessonCard button:hover {
+  background: rgb(236.7365853659, 148.4634146341, 178.9024390244);
 }
 
 /*# sourceMappingURL=style.css.map */
