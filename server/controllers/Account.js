@@ -27,6 +27,7 @@ const login = (req, res) => {
   });
 };
 
+
 const signup = async (req, res) => {
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;

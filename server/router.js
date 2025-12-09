@@ -19,8 +19,8 @@ const router = (app) => {
   app.get('/getPosts', controllers.Post.getPosts);
 
   app.get('/getTiles', controllers.Tiles.getTiles);
-  app.post('/createOrder', mid.requiresLogin, controllers.Tiles.createOrder);
-  app.get('/orders', mid.requiresLogin, controllers.Tiles.getOrders);
+  app.post('/createOrder', mid.requiresLogin, controllers.Order.createOrder);
+  app.get('/orders', mid.requiresLogin, controllers.Order.getOrders);
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };

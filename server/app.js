@@ -33,7 +33,7 @@ redisClient.connect().then(() => {
   const app = express();
 
   app.use(helmet());
-  app.use('/assets', express.static(path.resolve(`${__dirname}/../assets`)));
+  app.use('/hosted', express.static(path.resolve(`${__dirname}/../hosted`)));
   app.use(favicon(path.resolve(`${__dirname}/../assets/img/circlelogo.PNG`)));
   app.use(compress());
   app.use(express.urlencoded({ extended: true }));
