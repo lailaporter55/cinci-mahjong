@@ -8,6 +8,10 @@ $background-color: #c75a85;
 $nav-bg: color.scale($primary-color, $lightness: -10%);
 $light-pink: #ffdceb;
 
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: $font-stack;

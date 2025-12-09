@@ -1,1 +1,0 @@
-//add about stuff in here and import it in home.jsx
