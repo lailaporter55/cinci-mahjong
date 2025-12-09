@@ -1,4 +1,4 @@
-const handleError = (messages) => {
+const handleError = (message) => {
   document.getElementById('errorMessage').textContent = message;
 }
 

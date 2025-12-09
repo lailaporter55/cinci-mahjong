@@ -8,7 +8,7 @@ const loginPage = (req, res) => {
 
 const logout = (req, res) => {
   req.session.destroy(); // will remove a users session
-  return res.redirect('/');
+  return res.redirect('/home');
 };
 
 const login = (req, res) => {
@@ -23,7 +23,7 @@ const login = (req, res) => {
       return res.status(401).json({ error: 'Wrong username or password!' });
     }
     req.session.account = Account.toAPI(account);
-    return res.json({ redirect: '/book' });
+    return res.json({ redirect: '/home' });
   });
 };
 
@@ -46,7 +46,7 @@ const signup = async (req, res) => {
     const newAccount = new Account({ username, password: hash });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
-    return res.status(200).json({ redirect: '/book' });
+    return res.status(200).json({ redirect: '/' });
   } catch (err) {
     console.log(err);
     if (err.code === 11000) {

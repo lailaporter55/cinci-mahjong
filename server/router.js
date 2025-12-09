@@ -23,5 +23,6 @@ const router = (app) => {
   app.get('/orders', mid.requiresLogin, controllers.Order.getOrders);
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.get('/home', mid.requiresLogin, (req, res) => res.render('home'));
 };
 module.exports = router;
