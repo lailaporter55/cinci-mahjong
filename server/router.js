@@ -3,6 +3,9 @@ const mid = require('./middleware');
 
 const router = (app) => {
 
+  app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.get('/home', mid.requiresLogin, (req, res) => res.render('home'));
+
 
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
@@ -22,7 +25,5 @@ const router = (app) => {
   app.post('/createOrder', mid.requiresLogin, controllers.Order.createOrder);
   app.get('/orders', mid.requiresLogin, controllers.Order.getOrders);
 
-  app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
-  app.get('/home', mid.requiresLogin, (req, res) => res.render('home'));
 };
 module.exports = router;

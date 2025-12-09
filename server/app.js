@@ -56,6 +56,12 @@ redisClient.connect().then(() => {
 
   router(app);
 
+  //404 errors
+  app.use((req, res) => {
+    res.status(404).render('404');
+  });
+
+
   app.listen(port, (err) => {
     if (err) { throw err; }
     console.log(`Listening on port ${port}`);
