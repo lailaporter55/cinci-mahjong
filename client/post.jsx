@@ -10,6 +10,7 @@ const React = require('react');
 const { useState, useEffect } = React; 
 const { createRoot } = require('react-dom/client'); 
 import axios from 'axios';
+import { FaStar } from 'react-icons/fa';
 
 //handles the review posting 
 const handlePost = (e, onPostAdded) => {
@@ -29,9 +30,12 @@ const handlePost = (e, onPostAdded) => {
     return false; 
 }
 
-//https://www.youtube.com/watch?v=XeiOnkEI7XI I used this video to help with the photo input 
+//https://www.youtube.com/watch?v=XeiOnkEI7XI used this video to help with the photo input 
+//https://www.youtube.com/watch?v=BmhU_MoxNqQ used this video help with the star rating
 //user can upload a review, rate with stars, and upload a photo
 
+const [rating , setRating ] = useState(null);
+const [rateColor , setColor] = useState(null);
 const PostForm = (props) => {
     state = {
         selectedFile: null
@@ -52,16 +56,30 @@ const PostForm = (props) => {
         <form id="postForm"
             onSubmit={(e) => handlePost(e, props.triggerReload)}
             name="postForm"
-            action= "/maker"
+            action= "/reviews"
             method= "POST"
             className="postForm"
         >
-            <label htmlFor="stars">Stars:</label>
-            <input id="starNum" type="number" min="1" max="5" name="stars" placeholder="Stars (1-5)" />
+            
+            {[...Array(5)].map(star , index =>{
+                const currentRate = index + 1;
+                return (
+                    <>
+                    <label>
+                    <input type="radio" name="rate" value={currentRate} onClick={() => setRating(currentRate)}/>
+                    <FaStar size={25}
+                    color={currentRate <= (hover || rating) ? "pink" : "grey"}
+                    />
+                    </label>
+                    </>
+            
+                )
+            })}
             <label htmlFor="review">Tell us what you think:</label>
             <input id="review" type="text" name="review" placeholder="Tell us what you think" />
-            <input type="file" onChange={this.fileSelectedHandler}/>
+            <input type="file" onChange={this.fileSelectedHandler} name="photo"/>
             <button onClick={this.fileUploadHandler}>Upload</button>
+            <label htmlFor="photo">Upload a Photo:</label>
             <input id="submitPost" type="submit" value="Post Review" />
 
         </form>
