@@ -34,8 +34,26 @@ const hideError = () => {
   document.getElementById('errorMessage').classList.add('hidden');
 };
 
+//form data for file uploads
+const sendFormDataPost = async (url, FormData, handler) => {
+  try{
+    const response = await fetch(url, {
+      method: 'POST', 
+      body: FormData,
+    });
+    const result = await response.json(); 
+    if(result.redirect) window.location = result.redirect; 
+    if(result.error) handleError(result.error); 
+    if(handler) handler(result);
+  }catch(err){
+    handleError("Network error: upload failed"); 
+    console.error(err);
+  }
+};
+
 module.exports = {
   handleError,
   sendPost,
   hideError,
+  sendFormDataPost,
 };

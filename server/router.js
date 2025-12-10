@@ -19,11 +19,9 @@ const router = (app) => {
 
   app.get('/cart', mid.requiresLogin, (req, res) => res.render('cart'));
   app.get('/getCart', mid.requiresLogin, controllers.Order.getCart);
-  app.post('checkout', mid.requiresLogin, controllers.Order.checkout);
+  app.post('/checkout', mid.requiresLogin, controllers.Order.checkout);
 
   app.get('/login', (req, res) => res.render('login'));
-
-  app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
 
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
