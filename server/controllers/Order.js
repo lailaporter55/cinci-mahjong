@@ -3,7 +3,7 @@ const models = require('../models');
 const { Order } = models;
 
 
-const createOrder = async (req, res) => {
+const checkout = async (req, res) => {
     if(!req.body.items || !req.bod.totalPrice || !req.body.customerName || !req.body.customerEmail){
         return res.status(400).json({ error: 'All fields are required!' });
     }
@@ -26,7 +26,17 @@ const createOrder = async (req, res) => {
         }
         return res.status(500).json({ error: 'An error occurred while creating order!' });
     };
-}
+};
+
+const getCart = async (req, res) => {
+    try{
+        const docs = await Order.find({}).select('items totalPrice customerName customerEmail orderDate').lean().exec();
+        return res.json({ cart: docs });
+    }catch (err){
+        console.log(err);
+        return res.status(500).json({ error: 'Error retrieving cart!' });
+    }
+};
 
 const getOrders = async (req, res) => {
     try{
@@ -39,7 +49,9 @@ const getOrders = async (req, res) => {
     }
 };
 
+
 module.exports = {
-    createOrder,
+    checkout,
+    getCart,
     getOrders,
 };

@@ -22,43 +22,34 @@ const addToCart = (tile) => {
     }
 };
 
-const checkout = async () => {
-    const orderData = {
-        items: cart, 
-        total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-    };
 
-    const res = await fetch('/api/orders', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
-    });
-    const data = await res.json();
-    alert(`Order successful! Your order ID is ${data.orderId}`);
-    setCart([]);
+const App = async (props) => {
+    const [addToCart] = useState(false); 
+    if(props.isLoggedIn){
+        <div id="addToCart">
+            <button onClick={() => addToCart(tile)}>Add to Cart</button>
+        </div>
+    }
+
+    return (
+        <div className="tilePage">
+            <h1>Tiles</h1>
+            <div className="tileList">
+                {tiles.map((tile) => (
+                    <div key={tile.id} className="tileItem">
+                        <img src={tile.image} alt={tile.name} />
+                        <h3>{tile.name}</h3>
+                        <p>Price: ${tile.price}</p>
+                        <button onClick={() => addToCart(tile)}>Add to Cart</button>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+    
 };
-return (
-    <div className="tilePage">
-        <h1>Tiles</h1>
-        <div className="tileList">
-            {tiles.map((tile) => (
-                <div key={tile.id} className="tileItem">
-                    <img src={tile.image} alt={tile.name} />
-                    <h3>{tile.name}</h3>
-                    <p>Price: ${tile.price}</p>
-                    <button onClick={() => addToCart(tile)}>Add to Cart</button>
-                </div>
-            ))}
-        </div>
-        <div className="cart">
-            <h2>Shopping Cart</h2>
-            {cart.length === 0 && <p>Your cart is empty</p>}
-            {cart.map(item => (<p key={item.id}>{item.name} x {item.quantity} </p>))}
-            {cart.length > 0 && (<button className="checkoutButton" onClick={checkout}>Checkout</button>)}
-        </div>
-    </div>
-);
-
-
+const init = () => {
+    const root = createRoot(document.getElementById('app'));
+    root.render( <App /> );
+};
+window.onload = init;

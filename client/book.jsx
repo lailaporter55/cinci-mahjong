@@ -82,8 +82,27 @@ const PartyList = (props) => {
     )
 }; 
 
+const addToCart = (tile) => {
+    const exists = cart.find(item => item.id === tile.id);
+    if(exists){
+        return (
+            setCart(
+                cart.map(item =>
+                    item.id === tile.id ? { ...item, quantity: item.quantity + 1} : item
+                )
+            )
+        );
+    }else{
+        return (
+            setCart([...cart, { ...tile, quantity: 1 }])
+        );
+        
+    }
+};
+
+
 const App = async (props) => {
-    const [reloadParty, setReloadParty] = useState(false); 
+    const [reloadParty, setReloadParty, addToCart] = useState(false); 
     if(props.isLoggedIn){
         <div id="book">
             <PartyForm triggerReload={() => setReloadParty(!reloadParty)} />
