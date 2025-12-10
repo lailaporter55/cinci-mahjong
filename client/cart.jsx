@@ -7,6 +7,17 @@ const React = require('react');
 const { useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
 
+//load cart from mongoDB when user logs in
+useEffect(() => {
+    fetch('/api/cart')
+    .then((res) => res.json())
+    .then(data => setCart(data.cartItems));
+}, []);
+
+const removeItem = (itemId) => {
+    setCart(cart.filter(item => item.id !== itemId));
+}; 
+
 const checkout = async () => {
     const orderData = {
         items: cart, 
@@ -25,6 +36,8 @@ const checkout = async () => {
     setCart([]);
 };
 
+
+
 const App = async (props) => {
     const [checkout] = useState(false);
 
@@ -33,7 +46,11 @@ const App = async (props) => {
             <div className="cart">
                 <h2>Shopping Cart</h2>
                 {cart.length === 0 && <p>Your cart is empty</p>}
+                <div id="cartItems">
                 {cart.map(item => (<p key={item.id}>{item.name} x {item.quantity} </p>))}
+                </div>
+                <button id="remove" onClick={() => removeItem(item.id)}>Remove</button>
+                <p id="price">Total: ${total.toFixed(2)}</p>
                 {cart.length > 0 && (<button className="checkoutButton" onClick={checkout}>Checkout</button>)}
             </div>
     
