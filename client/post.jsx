@@ -33,24 +33,21 @@ const handlePost = (e, onPostAdded) => {
 //https://www.youtube.com/watch?v=XeiOnkEI7XI used this video to help with the photo input 
 //https://www.youtube.com/watch?v=BmhU_MoxNqQ used this video help with the star rating
 //user can upload a review, rate with stars, and upload a photo
-
-const [rating , setRating ] = useState(null);
-const [rateColor , setColor] = useState(null);
 const PostForm = (props) => {
-    state = {
-        selectedFile: null
-    }
+    const [rating , setRating ] = useState(null);
+    const state = {selectedFile: null};
     const fileSelectedHandler = (e) => {
         this.setState({
             selectedFile: e.target.files[0]
         });
     }
-    const fileUploadHandler = (e) => {
+    const fileUploadHandler =  (e) => {
         const fd = new FormData();
         fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-        axios.post('', fd).then(res => {
-            console.log(res);
-        });
+            axios.post('/reviews', fd).then(res => {
+                console.log(res);
+            });
+            setSelectedFile(null); 
     }
     return (
         <form id="postForm"

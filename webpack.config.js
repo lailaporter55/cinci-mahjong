@@ -6,6 +6,8 @@ module.exports = {
         login: './client/login.jsx',
         book: './client/book.jsx',
         post: './client/post.jsx',
+        tiles: './client/tiles.jsx',
+        cart: './client/cart.jsx',
     },
     module:{
         rules:[
