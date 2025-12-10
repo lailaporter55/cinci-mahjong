@@ -2,7 +2,7 @@ const models = require('../models');
 
 const { Order } = models;
 
-
+//the order controller is responsible for the code that cart uses 
 const checkout = async (req, res) => {
     if(!req.body.items || !req.bod.totalPrice || !req.body.customerName || !req.body.customerEmail){
         return res.status(400).json({ error: 'All fields are required!' });

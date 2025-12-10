@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//this is the info that will be in the cart file, stored in mongo 
 const OrderScheme = new mongoose.Schema({
     items: {
         product: {type: mongoose.Schema.ObjectId, ref: 'Tile', required: true},

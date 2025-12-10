@@ -24,6 +24,7 @@ const handleParty = (e, onPartyAdded) => {
     return false;
 }
 
+//this actually isnt needed bc the parties are already made 
 const PartyForm = (props) => {
     return (
         <form id="partyForm"
@@ -45,6 +46,7 @@ const PartyForm = (props) => {
     );
 };
 
+//shows the list of parties the user has booked 
 const PartyList = (props) => {
     const [parties, book] = useState(props.parties);
 

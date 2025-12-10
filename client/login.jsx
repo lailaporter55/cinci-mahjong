@@ -36,6 +36,7 @@ const handleSignup = (e) => {
     helper.sendPost(e.target.action, {username, pass, pass2});
     return false;
 }
+//for some reason login completly went away
 
 const LoginWindow = (props) => {
     return (

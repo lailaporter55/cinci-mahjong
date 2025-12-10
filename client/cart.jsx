@@ -18,6 +18,9 @@ const removeItem = (itemId) => {
     setCart(cart.filter(item => item.id !== itemId));
 }; 
 
+
+//checkout is where the user would put in any credit card info if i would have asked for any 
+//in terms of the 430 project I am not asking for payment info
 const checkout = async () => {
     const orderData = {
         items: cart, 
