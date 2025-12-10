@@ -236,4 +236,62 @@ nav a:hover {
   background: rgb(236.7365853659, 148.4634146341, 178.9024390244);
 }
 
+#tiles {
+  background-color: #c75a85;
+  padding: 60px 40px;
+  text-align: center;
+}
+#tiles h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1c4482;
+  margin-bottom: 40px;
+}
+#tiles #tileSets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+#tiles .tileSet {
+  background-color: #f3b9cd;
+  color: #1c4482;
+  padding: 25px;
+  width: 100%;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+#tiles .tileSet h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+#tiles .tileSet img {
+  width: 100%;
+  border-radius: 4px;
+}
+#tiles .tileSet p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 10px 0 0;
+}
+#tiles .tileSet button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  background-color: #1c4482;
+  color: #f3b9cd;
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+#tiles .tileSet button:hover {
+  background-color: rgb(25.2, 61.2, 117);
+}
+
 /*# sourceMappingURL=style.css.map */
