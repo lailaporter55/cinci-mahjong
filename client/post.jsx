@@ -9,6 +9,7 @@ const helper = require('./helper.js');
 const React = require('react'); 
 const { useState, useEffect } = React; 
 const { createRoot } = require('react-dom/client'); 
+import axios from 'axios';
 
 //handles the review posting 
 const handlePost = (e, onPostAdded) => {
@@ -28,24 +29,44 @@ const handlePost = (e, onPostAdded) => {
     return false; 
 }
 
+//https://www.youtube.com/watch?v=XeiOnkEI7XI I used this video to help with the photo input 
+//user can upload a review, rate with stars, and upload a photo
+
 const PostForm = (props) => {
+    state = {
+        selectedFile: null
+    }
+    const fileSelectedHandler = (e) => {
+        this.setState({
+            selectedFile: e.target.files[0]
+        });
+    }
+    const fileUploadHandler = (e) => {
+        const fd = new FormData();
+        fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+        axios.post('', fd).then(res => {
+            console.log(res);
+        });
+    }
     return (
         <form id="postForm"
             onSubmit={(e) => handlePost(e, props.triggerReload)}
             name="postForm"
             action= "/maker"
-            mathod= "POST"
+            method= "POST"
             className="postForm"
         >
             <label htmlFor="stars">Stars:</label>
-            <input id="starNum" type="text" name="stars" placeholder="Stars (1-5)" />
+            <input id="starNum" type="number" min="1" max="5" name="stars" placeholder="Stars (1-5)" />
             <label htmlFor="review">Tell us what you think:</label>
-            <input id="review" type="text" name="review" placeholder="review" />
+            <input id="review" type="text" name="review" placeholder="Tell us what you think" />
+            <input type="file" onChange={this.fileSelectedHandler}/>
+            <button onClick={this.fileUploadHandler}>Upload</button>
+            <input id="submitPost" type="submit" value="Post Review" />
 
         </form>
     );
 };
-//i need to figure out how i should add the photos in and the stars input will be different 
 
 //list of reviews 
 const PostList = (props) => {
